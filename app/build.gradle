@@ -59,7 +59,7 @@ dependencies {
     def constraint_layout = "2.0.4"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
 
-    def androidx_ui = "1.0.0-alpha07"
+    def androidx_ui = "1.0.0-alpha05"
     implementation "androidx.ui:ui-tooling:$androidx_ui"
 
     def compose = "1.0.0-alpha08"
