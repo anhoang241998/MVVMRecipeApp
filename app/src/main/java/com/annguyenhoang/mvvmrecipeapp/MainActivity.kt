@@ -6,8 +6,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
@@ -27,52 +30,75 @@ class MainActivity : AppCompatActivity() {
                 res = resources,
                 resId = R.drawable.happy_meal_small
             )
-            ColumnDetailScreen(bitmap)
+            DetailScreen(bitmap)
 //            NewStory(bitmapReference = bitmap)
-
         }
-
     }
-}
 
-@Composable
-fun ColumnDetailScreen(bitmap: ImageBitmap) {
-    ScrollableColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color(0xFFF2F2F2))
-    ) {
-        Image(
-            bitmap = bitmap,
-            modifier = Modifier.height(300.dp),
-            contentScale = ContentScale.Crop
-        )
-        Column(
-            modifier = Modifier.padding(16.dp)
+    @Composable
+    fun DetailScreen(bitmap: ImageBitmap) {
+        ScrollableColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color(0xFFF2F2F2))
         ) {
-            Text(
-                text = "Happy Meal",
-                style = TextStyle(
-                    fontSize = TextUnit.Companion.Sp(26)
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = 6.dp
+            ) {
+                Image(
+                    bitmap = bitmap,
+                    modifier = Modifier
+                        .height(300.dp),
+                    contentScale = ContentScale.Crop
                 )
-            )
+            }
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
 
-            Spacer(modifier = Modifier.padding(top = 10.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "Happy Meal",
+                        style = TextStyle(
+                            fontSize = TextUnit.Companion.Sp(26)
+                        )
+                    )
 
-            Text(
-                text = "800 Calories",
-                style = TextStyle(
-                    fontSize = TextUnit.Companion.Sp(17)
+                    Text(
+                        text = "$5.99",
+                        modifier = Modifier.align(Alignment.CenterVertically),
+                        style = TextStyle(
+                            color = Color(0xFF85bb65),
+                            fontSize = TextUnit.Companion.Sp(17)
+                        )
+                    )
+                }
+
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                Text(
+                    text = "800 Calories",
+                    style = TextStyle(
+                        fontSize = TextUnit.Companion.Sp(17)
+                    )
                 )
-            )
-            Spacer(modifier = Modifier.padding(top = 10.dp))
-            Text(
-                text = "$5.99",
-                style = TextStyle(
-                    color = Color(0xFF85bb65),
-                    fontSize = TextUnit.Companion.Sp(17)
-                )
-            )
+
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.align(
+                        Alignment.CenterHorizontally
+                    )
+                ) {
+                    Text(text = "Order Now")
+                }
+
+            }
         }
     }
 }
